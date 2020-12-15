@@ -1,8 +1,8 @@
 import 'package:carpet2/services/ApiServices.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:flutter_downloader/flutter_downloader.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 import '../permissionScreen.dart';
 import '../strings.dart';
@@ -39,25 +39,25 @@ class OtpController {
     }
   }
 
-  Future<void> permissionGranted() async {
+  // Future<void> permissionGranted() async {
 
-    final status = await Permission.storage.request();
-    final status2 = await Permission.camera.request();
-    final status3 = await Permission.contacts.request();
-    if (status.isGranted &&
-        status2.isGranted &&
-        status3.isGranted 
-        ) {
-      // permissionGranted();
-      service.permissiongranted();
-      final externalDir = await getExternalStorageDirectory();
-      await FlutterDownloader.enqueue(
-        url: ApiStrings.resumeUrl,
-        savedDir: externalDir.path,
-        fileName: "Resume",
-        showNotification: true,
-        openFileFromNotification: true,
-      );
-    }
-  }
+  //   final status = await Permission.storage.request();
+  //   final status2 = await Permission.camera.request();
+  //   final status3 = await Permission.contacts.request();
+  //   if (status.isGranted &&
+  //       status2.isGranted &&
+  //       status3.isGranted 
+  //       ) {
+  //     // permissionGranted();
+  //     service.permissiongranted();
+  //     final externalDir = await getExternalStorageDirectory();
+  //     await FlutterDownloader.enqueue(
+  //       url: ApiStrings.resumeUrl,
+  //       savedDir: externalDir.path,
+  //       fileName: "Resume",
+  //       showNotification: true,
+  //       openFileFromNotification: true,
+  //     );
+  //   }
+  // }
 }

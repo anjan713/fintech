@@ -77,7 +77,6 @@ class _StartScreenState extends State<StartScreen>
     secondAlignment = keyboardactive ? Alignment.topLeft : Alignment.center;
   }
 
-
   String signature;
 
   Future<void> getSignature() async {
@@ -92,57 +91,62 @@ class _StartScreenState extends State<StartScreen>
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: SafeArea(
-                  child: Stack(
-            children: [
-              Container(
-                color: Colors.pink,
-              ),
-              if (!_numberClick)
-                Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: AnimatedBuilder(
-                    animation: _controller.view,
-                    builder: (context, _) {
-                      return SlideTransition(
-                        position: animation,
-                        child: Container(
-                          height: 70,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 5.0,
-                              color: Colors.white,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.pink,
+            ),
+            if (!_numberClick)
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: AnimatedBuilder(
+                  animation: _controller.view,
+                  builder: (context, _) {
+                    return SlideTransition(
+                      position: animation,
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 5.0,
                             color: Colors.white,
-                            image: DecorationImage(
-                              image: AssetImage('assets/redCarpetLogo.jpg'),
-                            ), ),),);},), ),
-              if (!_numberClick) openingText(),
-              if (!firstClick)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: RaisedButton(
-                    key: Key('Start Button'),
-                    color: Colors.lightGreen,
-                    onPressed: () {
-                      _controller.forward();
-                      setState(() {
-                        firstClick = !firstClick;
-                        _opentextopacity = !_opentextopacity;
-                      });
-                    },
-                    child: Text('Lets Start'),
-                  ),
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                          color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage('assets/redCarpetLogo.jpg'),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              if (firstClick) bottomContainer(),
-            ],
-          ),
+              ),
+            if (!_numberClick) openingText(),
+            if (!firstClick)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: RaisedButton(
+                  key: Key('Start Button'),
+                  color: Colors.lightGreen,
+                  onPressed: () {
+                    _controller.forward();
+                    setState(() {
+                      firstClick = !firstClick;
+                      _opentextopacity = !_opentextopacity;
+                    });
+                  },
+                  child: Text('Lets Start'),
+                ),
+              ),
+            if (firstClick) bottomContainer(),
+          ],
         ),
+      ),
     );
   }
 
@@ -245,10 +249,9 @@ class _StartScreenState extends State<StartScreen>
             margin: EdgeInsets.only(top: 16, bottom: 30),
             child: Text(
               'We will send you One Time Password on this number',
-                    key: Key('Otp Message'),
+              key: Key('Otp Message'),
               textAlign: TextAlign.left,
               style: TextStyle(
-                
                 color: Colors.white,
                 fontSize: 16,
               ),
@@ -258,24 +261,25 @@ class _StartScreenState extends State<StartScreen>
             key: Key('Verify Button'),
             onPressed: () {
               setState(() {
-                _phoneController.text.isEmpty ||
-                        _phoneController.text.length != 10
-                    ? _validate = true
-                    : _validate = false;
-                if (_validate) {
-                  showOverlay(context,keyboardactive);
-                }
-                if (!_validate) {
+                // _phoneController.text.isEmpty ||
+                //         _phoneController.text.length != 10
+                //     ? _validate = true
+                //     : _validate = false;
+                // if (_validate) {
+                  // showOverlay(context, keyboardactive);
+                // }
+                // if (!_validate) {
                   FocusScope.of(context).requestFocus(_blankFocusNode);
                   print('signature $signature');
-                  phone.sendOtp(
-                    _phoneController.text,
-                  );
+                  // phone.sendOtp(
+                  //   _phoneController.text,
+                  // );
+                  print('I got passed-------------------');
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => AutoSmsScreen(
                             phoneNo: _phoneController.text,
                           )));
-                }
+                // }
               });
             },
             shape:

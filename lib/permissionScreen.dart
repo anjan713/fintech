@@ -20,8 +20,7 @@ class _PermissionScreenState extends State<PermissionScreen> {
   }
 
   final _otpController = OtpController();
-  // final _service = ApiService();
-
+  
   _launchURL(url) async {
     //  url =this.;
     if (await canLaunch(url)) {
@@ -85,25 +84,15 @@ class _PermissionScreenState extends State<PermissionScreen> {
                             SizedBox(
                               height: 8,
                             ),
-                            RaisedButton(
-                              onPressed: () async {
-                                // final status =
-                                //     await Permission.storage.request();
-                                // final status2 =
-                                //     await Permission.camera.request();
-                                // final status3 =
-                                //     await Permission.contacts.request();
-                                // final status4 =
-                                //     await Permission.location.request();
-                                // if (status.isGranted && status2.isGranted && status3.isGranted && status4.isGranted) {
-                                //   // permissionGranted();
-                                 await _otpController.permissionGranted();
+                            // RaisedButton(
+                            //   onPressed: () async {
+                            //       await _otpController.permissionGranted();
                                 
-                              },
-                              child: Text('Download'),
-                              textColor: Colors.white,
-                              color: Colors.black,
-                            ),
+                            //   },
+                            //   child: Text('Download'),
+                            //   textColor: Colors.white,
+                            //   color: Colors.black,
+                            // ),
                           ],
                         ),
                       ],
@@ -203,19 +192,19 @@ class _PermissionScreenState extends State<PermissionScreen> {
                       children: [
                         IconButton(
                           iconSize: 50,
-                          icon: FaIcon(FontAwesomeIcons.phoneAlt),
+                          icon: FaIcon(FontAwesomeIcons.linkedin),
                           onPressed: () {
-                            _launchURL('tel:+9948441044');
+                            _launchURL(ApiStrings.linkedinUrl);
                           },
                         ),
                         SizedBox(
                           width: 16,
                         ),
                         Text(
-                          'Phone',
+                          'Linkedin',
                           style: TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 20),
-                        )
+                        ),
                       ],
                     ),
                   ),

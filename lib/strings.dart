@@ -6,4 +6,6 @@ class ApiStrings {
   static final String githubUrl = 'https://github.com/anjan713';
   static final String profileImage =
       'https://firebasestorage.googleapis.com/v0/b/profile-data-27cae.appspot.com/o/1600284C203_Anjan_Narla%20(2).jpg?alt=media&token=84639c69-ec0c-4190-8d57-3922a4b2e7f1';
+  static final String linkedinUrl =
+      'https://www.linkedin.com/in/anjan-narla-55265a135';
 }

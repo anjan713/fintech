@@ -5,6 +5,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'widgets/MyCustomTimer.dart';
 import 'services/ApiServices.dart';
 import 'controller/otpController.dart';
+import 'permissionScreen.dart';
 
 //Signature: rRIYn79l4oL
 
@@ -40,7 +41,7 @@ class _AutoSmsScreenState extends State<AutoSmsScreen> {
     super.dispose();
   }
 
-  final verifyOtp=OtpController();
+  final verifyOtp = OtpController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -89,9 +90,17 @@ class _AutoSmsScreenState extends State<AutoSmsScreen> {
                       codeLength: 6,
                       autofocus: false,
                       onCodeChanged: (val) {
-                       verifyOtp.validation(context, 'Invalid Otp', val, widget.phoneNo,
-                            // _blankFocusNode
-                            );
+                        //  verifyOtp.validation(context, 'Invalid Otp', val, widget.phoneNo,
+                        FocusScope.of(context).requestFocus(_blankFocusNode);
+                        Future.delayed(Duration(seconds: 1), () {
+                       if (val.length == 6) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) => PermissionScreen()));
+                         
+                       }
+
+                        });
+                        // _blankFocusNode
                       },
                     );
                   },
@@ -109,10 +118,8 @@ class _AutoSmsScreenState extends State<AutoSmsScreen> {
                 child: FlareActor(
                   'assets/Kia_loading_dot.flr',
                   animation: "Loading",
-
                   fit: BoxFit.contain,
                   alignment: Alignment.center,
-                  
                 ),
               ),
             ],
